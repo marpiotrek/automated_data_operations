@@ -1,14 +1,9 @@
 import pandas as pd
 import numpy as np
-from data_cleaning import read_file, change_to_nan
+from data_cleaning import change_to_nan
+from user_communication import FileToDataFrame
 from visualization import extract_columns
 
-# result = read_file(input('give a file name You want to read\n'))
-# data = read_csv_file('IRIS.csv')
-# array = data.values
-# columns = data.columns
-# for i in range(len(columns)):
-#     columns[i] = data[f'{columns[i]}']
 
 df = pd.DataFrame(
     np.random.randn(5, 3),
@@ -22,8 +17,11 @@ df3 = df2.drop(index=['b','g'])
 df3.iloc[0, 2] = 'Null'
 df3.iloc[4, 1] = 'NA'
 df3.iloc[5, 4] = 'NA'
-df4 = df3.copy()
-Nan_data = change_to_nan(df4, ['slowo', 'one'])
-print(df3)
-print('\n\n')
-print(Nan_data)
+
+# df4 = df3.copy()
+# Nan_data = change_to_nan(df4, ['slowo', 'Bar'])
+# print(df3)
+# print('\n\n')
+# print(Nan_data)
+
+view_directory()

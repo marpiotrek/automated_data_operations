@@ -2,11 +2,6 @@ import pandas as pd
 import numpy as np
 
 
-def read_file(filename):
-    data = pd.read_csv(f'csv_files/{filename}')
-    return data
-
-
 def remove_missing_data(data):
     pass
 
@@ -19,10 +14,12 @@ def change_to_nan(data, nan_alikes=[]):
     :param nan_alikes: list of values to be considered as NaNs
     :return: data frame
     '''
-    #using .str.contains("Null|NA|not applicable") could also work for specified column but
-    #it returns error when there are already cells with NaN
+    #all characters in compared strings need to be lowercase letters
+
+    nan_alikes = list(map(lambda x: x.lower(), nan_alikes))
     NaN_like_data = ['null', 'na', 'n/a', 'not applicable', 'not available', 'no answer'] + nan_alikes
     for word in NaN_like_data:
+        print(word)
         data[data.apply(lambda x: x.astype(str).str.lower()) == word] = np.nan
     return data
 
