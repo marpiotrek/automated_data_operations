@@ -3,7 +3,7 @@ import numpy as np
 from data_cleaning import change_to_nan
 from user_communication import FileToDataFrame
 from visualization import extract_columns
-
+from information import DataInformation
 
 df = pd.DataFrame(
     np.random.randn(5, 3),
@@ -18,10 +18,9 @@ df3.iloc[0, 2] = 'Null'
 df3.iloc[4, 1] = 'NA'
 df3.iloc[5, 4] = 'NA'
 
-# df4 = df3.copy()
-# Nan_data = change_to_nan(df4, ['slowo', 'Bar'])
-# print(df3)
-# print('\n\n')
-# print(Nan_data)
+df4 = df3.copy()
+df4 = change_to_nan(df4)
+print(df4)
+stats = DataInformation(df4)
+stats.missing_values()
 
-view_directory()
